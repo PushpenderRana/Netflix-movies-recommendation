@@ -1,0 +1,41 @@
+/* Background */
+.stApp {
+    background-color: #141414;
+    color: white;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #111111;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: #E50914;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    height: 45px;
+    font-weight: bold;
+}
+
+.stButton > button:hover {
+    background-color: #B20710;
+    color: white;
+}
+
+/* Selectbox */
+.stSelectbox label {
+    color: white;
+    font-weight: bold;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: white;
+}
+
+/* Divider */
+hr {
+    border: 1px solid #333;
+}
