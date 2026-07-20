@@ -4,15 +4,12 @@ import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# ==========================================
 # Load Dataset
-# ==========================================
 
 movies = pd.read_csv("backend/data/processed/final_movies.csv")
 
 print("Dataset Shape:", movies.shape)
 
-# ==========================================
 # Convert Tags into Vectors
 # ==========================================
 
