@@ -66,6 +66,19 @@ def recommend():
             )
 
             result["llm_explanation"] = explanations
+            result = recommend_movies(movie)
+
+            print("Recommendation completed")
+
+            if result["success"]:
+                explanations = explain_recommendations(
+                    result["searched_movie"],
+                    result["recommendations"])
+                print("LLM Output:", explanations)
+                result["llm_explanation"] = explanations
+            print(result)
+
+
 
         return jsonify(result)
 

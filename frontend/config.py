@@ -1,7 +1,7 @@
 # Flask Backend URL
 
-API_URL = "http://127.0.0.1:5000"
-# API_URL=https://netflix-movies-recommendation.onrender.com
+# API_URL = "http://127.0.0.1:5000"
+API_URL="https://netflix-movies-recommendation.onrender.com"
 
 # Page Configuration
 
