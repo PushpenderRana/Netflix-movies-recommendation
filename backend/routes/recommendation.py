@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify
-
+from services.recommendation_service import recommend_movies
+from llm import explain_recommendations
+import traceback
 from services.recommendation_service import (
     recommend_movies,
     get_all_movies,
@@ -10,6 +12,24 @@ recommendation_bp = Blueprint(
     "recommendation",
     __name__
 )
+
+
+@recommendation_bp.route("/recommend/<movie>", methods=["GET"])
+def recommend_with_llm(movie):
+
+    result = recommend_movies(movie)
+
+    if not result["success"]:
+        return jsonify(result)
+
+    explanations = explain_recommendations(
+        result["searched_movie"],
+        result["recommendations"]
+    )
+
+    result["llm_explanation"] = explanations
+
+    return jsonify(result)
 
 
 
@@ -38,9 +58,19 @@ def recommend():
 
         result = recommend_movies(movie)
 
+        if result["success"]:
+
+            explanations = explain_recommendations(
+                result["searched_movie"],
+                result["recommendations"]
+            )
+
+            result["llm_explanation"] = explanations
+
         return jsonify(result)
 
     except Exception as e:
+        traceback.print_exc()
 
         return jsonify({
             "error": str(e)
@@ -90,3 +120,6 @@ def search():
         return jsonify({
             "error": str(e)
         }), 500
+    
+
+

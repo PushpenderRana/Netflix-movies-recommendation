@@ -1,6 +1,5 @@
 import pickle
 
-
 movies = pickle.load(
     open("models/movies.pkl", "rb")
 )
@@ -28,7 +27,9 @@ def recommend_movies(movie):
             "message": "Movie not found."
         }
 
-    index = matched.index[0]
+    searched_movie = matched.iloc[0]
+
+    index = searched_movie.name
 
     distances = similarity[index]
 
@@ -53,13 +54,26 @@ def recommend_movies(movie):
             "vote_count": int(recommended_movie["vote_count"]),
             "release_date": recommended_movie["release_date"],
             "runtime": int(recommended_movie["runtime"]),
-            "tagline": recommended_movie["tagline"] if str(recommended_movie["tagline"]) != "nan" else "",
+            "tagline": "" if str(recommended_movie["tagline"]) == "nan" else recommended_movie["tagline"],
             "popularity": float(recommended_movie["popularity"])
         })
 
     return {
         "success": True,
-        "searched_movie": matched.iloc[0]["title"],
+
+        "searched_movie": {
+            "id": int(searched_movie["id"]),
+            "title": searched_movie["title"],
+            "overview": searched_movie["overview"],
+            "genres": searched_movie["genres"],
+            "vote_average": float(searched_movie["vote_average"]),
+            "vote_count": int(searched_movie["vote_count"]),
+            "release_date": searched_movie["release_date"],
+            "runtime": int(searched_movie["runtime"]),
+            "tagline": "" if str(searched_movie["tagline"]) == "nan" else searched_movie["tagline"],
+            "popularity": float(searched_movie["popularity"])
+        },
+
         "recommendations": recommendations
     }
 

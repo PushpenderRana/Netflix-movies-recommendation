@@ -59,7 +59,7 @@ with st.spinner("Loading movies..."):
     movies = get_movies()
 
 if not movies:
-    st.error("❌ Unable to connect to Flask API.")
+    st.error("❌ Unable to connect to Backend API.")
     st.stop()
 
 # ----------------------------------
@@ -81,6 +81,7 @@ with col2:
 
     st.write("")
     st.write("")
+
     recommend = st.button(
         "Recommend",
         use_container_width=True
@@ -101,28 +102,80 @@ if recommend:
         with st.spinner("Finding similar movies..."):
 
             result = recommend_movie(selected_movie)
-
+        
+ 
         if result.get("success"):
 
-            st.divider()
-
-            st.subheader(
-                f"🎯 Because you liked **{selected_movie}**"
+            tab1, tab2 = st.tabs(
+                [
+                    "🎬 Recommendations",
+                    "🤖 AI Explanation"
+                ]
             )
 
-            st.write("You may also enjoy these movies:")
+            # ----------------------------------
+            # Recommendation Tab
+            # ----------------------------------
 
-            cols = st.columns(5)
+            with tab1:
 
-            for i, movie in enumerate(result["recommendations"]):
+                st.subheader(
+                    f"🎯 Because you liked **{selected_movie}**"
+                )
 
-                with cols[i]:
-                   
-                    movie_card(movie)
+                st.write(
+                    "You may also enjoy these movies:"
+                )
+
+                cols = st.columns(5)
+
+                for i, movie in enumerate(result["recommendations"]):
+
+                    with cols[i]:
+
+                        movie_card(movie)
+
+            # ----------------------------------
+            # AI Explanation Tab
+            # ----------------------------------
+
+            with tab2:
+
+                st.subheader(
+                    "🤖 Why were these movies recommended?"
+                )
+
+                explanations = result.get(
+                    "llm_explanation",
+                    []
+                )
+
+                if explanations:
+
+                    for item in explanations:
+
+                        st.markdown(
+                            f"### 🎬 {item['title']}"
+                        )
+
+                        st.success(item["reason"])
+
+                        st.divider()
+
+                else:
+
+                    st.info(
+                        "AI explanation is not available."
+                    )
 
         else:
 
-            st.error(result.get("message", "Movie not found."))
+            st.error(
+                result.get(
+                    "message",
+                    "Movie not found."
+                )
+            )
 
 # ----------------------------------
 # Footer
@@ -131,5 +184,5 @@ if recommend:
 st.divider()
 
 st.caption(
-    "Built with ❤️ using Flask, Streamlit, Scikit-Learn & Pandas"
+    "Built with ❤️ using Streamlit, FastAPI, Scikit-Learn, Pandas & MiniMax-M3"
 )
