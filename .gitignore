@@ -75,5 +75,5 @@ backend/data/processed/
 *.lnk
 
 
-backend/models/*.pkl
+# backend/models/*.pkl
 backend/data/processed/*.csv
