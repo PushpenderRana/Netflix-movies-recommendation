@@ -56,40 +56,38 @@ def recommend():
                 "error": "Movie name is required."
             }), 400
 
+        # Recommendation
         result = recommend_movies(movie)
 
+        print("\n========== Recommendation ==========")
+        print(result)
+
         if result["success"]:
+
+            print("\n========== Calling LLM ==========")
 
             explanations = explain_recommendations(
                 result["searched_movie"],
                 result["recommendations"]
             )
 
+            print("\n========== LLM Output ==========")
+            print(explanations)
+
             result["llm_explanation"] = explanations
-            result = recommend_movies(movie)
 
-            print("Recommendation completed")
-
-            if result["success"]:
-                explanations = explain_recommendations(
-                    result["searched_movie"],
-                    result["recommendations"])
-                print("LLM Output:", explanations)
-                result["llm_explanation"] = explanations
-            print(result)
-
-
+        print("\n========== Final Response ==========")
+        print(result)
 
         return jsonify(result)
 
     except Exception as e:
+
         traceback.print_exc()
 
         return jsonify({
             "error": str(e)
         }), 500
-
-
 # ---------------------------------------
 # Get All Movies
 # ---------------------------------------
