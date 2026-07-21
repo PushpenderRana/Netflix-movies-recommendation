@@ -61,7 +61,7 @@ Example:
 ]
 """
 
-    # Try every model until one succeeds
+    
     for model in MODELS:
 
         try:
@@ -88,7 +88,7 @@ Example:
                 print(f"{model} returned empty content.")
                 continue
 
-            # Remove markdown code block
+            
             if content.startswith("```"):
 
                 lines = content.splitlines()

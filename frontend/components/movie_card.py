@@ -21,23 +21,23 @@ def movie_card(movie):
 
     with st.container(border=True):
 
-        st.markdown(f"### 🎬 {title}")
+        st.markdown(f"###  {title}")
 
         col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown(f"⭐ **{rating}**")
-            st.markdown(f"📅 **{release}**")
+            st.markdown(f" **{rating}**")
+            st.markdown(f" **{release}**")
 
         with col2:
-            st.markdown(f"⏱ **{runtime} min**")
+            st.markdown(f" **{runtime} min**")
 
-        st.markdown(f"🎭 **{genres}**")
+        st.markdown(f" **{genres}**")
 
         if tagline:
             st.caption(f"*{tagline}*")
 
         
 
-        with st.expander("📖 Read More"):
+        with st.expander(" Read More"):
             st.write(overview)

@@ -5,7 +5,7 @@ from components.sidebar import show_sidebar
 
 st.set_page_config(
     page_title="About",
-    page_icon="ℹ️",
+    page_icon="",
     layout="wide"
 )
 
@@ -13,7 +13,7 @@ show_sidebar()
 
 show_navbar()
 
-st.title("ℹ️ About Project")
+st.title(" About Project")
 
 st.markdown("---")
 

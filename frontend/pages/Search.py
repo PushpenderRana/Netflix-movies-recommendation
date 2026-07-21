@@ -7,14 +7,14 @@ from components.sidebar import show_sidebar
 
 st.set_page_config(
     page_title="Search Movies",
-    page_icon="🔍",
+    page_icon="",
     layout="wide"
 )
 
 show_sidebar()
 show_navbar()
 
-st.title("🔍 Search Movies")
+st.title(" Search Movies")
 
 st.write("Search any movie available in the recommendation dataset.")
 
@@ -58,7 +58,7 @@ if movie_name:
                             border:1px solid #333;
                         ">
                             <h4 style="color:white;">
-                                🎬 {movie}
+                                 {movie}
                             </h4>
                         </div>
                         """,

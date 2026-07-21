@@ -5,9 +5,7 @@ def show_sidebar():
 
     with st.sidebar:
 
-        # -----------------------------
         # Logo
-        # -----------------------------
         st.image(
             "https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg",
             width=90
@@ -20,11 +18,9 @@ def show_sidebar():
 
         st.markdown("---")
 
-        # -----------------------------
         # Recommendation
-        # -----------------------------
         st.markdown(
-            "<h3 style='color:white;'>🎬 Recommendation</h3>",
+            "<h3 style='color:white;'> Recommendation</h3>",
             unsafe_allow_html=True
         )
 
@@ -39,7 +35,7 @@ def show_sidebar():
                 font-weight:bold;
                 margin-bottom:15px;
             ">
-                🎯 Content-Based Filtering
+                 Content-Based Filtering
             </div>
             """,
             unsafe_allow_html=True
@@ -47,30 +43,26 @@ def show_sidebar():
 
         st.markdown("---")
 
-        # -----------------------------
         # Tech Stack
-        # -----------------------------
         st.markdown(
             "<h3 style='color:white;'>🛠 Tech Stack</h3>",
             unsafe_allow_html=True
         )
 
         st.markdown("""
-- 🐍 **Python**
-- 🌐 **Flask API**
-- 🎨 **Streamlit**
-- 🤖 **Scikit-Learn**
-- 🐼 **Pandas**
-- 📦 **Pickle**
+-  **Python**
+-  **Flask API**
+-  **Streamlit**
+-  **Scikit-Learn**
+-  **Pandas**
+-  **Pickle**
         """)
 
         st.markdown("---")
 
-        # -----------------------------
         # Developer
-        # -----------------------------
         st.markdown(
-            "<h3 style='color:white;'>👨‍💻 Developer</h3>",
+            "<h3 style='color:white;'> Developer</h3>",
             unsafe_allow_html=True
         )
 
@@ -93,7 +85,5 @@ def show_sidebar():
 
         st.markdown("---")
 
-        # -----------------------------
-        # Footer
-        # -----------------------------
+        
         st.caption("© 2026 Netflix Recommendation System")

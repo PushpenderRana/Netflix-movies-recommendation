@@ -17,7 +17,7 @@ def show_navbar():
             text-align:center;
             margin-bottom:5px;
         ">
-            🎬 Netflix Recommendation System
+             Netflix Recommendation System
         </h1>
 
         <p style="

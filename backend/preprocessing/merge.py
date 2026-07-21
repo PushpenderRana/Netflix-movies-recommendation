@@ -40,9 +40,7 @@ print("\nMerged Shape:", movies.shape)
 print("\nColumns after merge:\n")
 print(movies.columns.tolist())
 
-# ==========================================
-# Keep only useful columns
-# ==========================================
+
 
 movies = movies[
     [
@@ -64,41 +62,30 @@ movies = movies[
 
 print("\nFinal Shape:", movies.shape)
 
-# ==========================================
-# Missing Values
-# ==========================================
 
 print("\nMissing Values:\n")
 print(movies.isnull().sum())
 
-# ==========================================
-# Remove Missing Values
-# ==========================================
+
 
 movies.dropna(inplace=True)
 
 print("\nShape After Removing Missing Values:")
 print(movies.shape)
 
-# ==========================================
-# Remove Duplicate Movies
-# ==========================================
+
 
 movies.drop_duplicates(inplace=True)
 
 print("\nShape After Removing Duplicate Rows:")
 print(movies.shape)
 
-# ==========================================
-# Preview Dataset
-# ==========================================
+
 
 print("\nFirst 5 Rows:\n")
 print(movies.head())
 
-# ==========================================
-# Save Dataset
-# ==========================================
+
 
 movies.to_csv(
     "backend/data/processed/movies_merged.csv",

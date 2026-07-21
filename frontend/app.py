@@ -6,9 +6,6 @@ from components.navbar import show_navbar
 from components.sidebar import show_sidebar
 from components.movie_card import movie_card
 
-# ----------------------------------
-# Page Config
-# ----------------------------------
 
 st.set_page_config(
     page_title=APP_NAME,
@@ -16,9 +13,7 @@ st.set_page_config(
     layout=LAYOUT
 )
 
-# ----------------------------------
-# Load CSS
-# ----------------------------------
+
 
 try:
     with open("assets/style.css", encoding="utf-8") as css:
@@ -29,20 +24,15 @@ try:
 except FileNotFoundError:
     pass
 
-# ----------------------------------
-# Sidebar & Navbar
-# ----------------------------------
 
 show_sidebar()
 show_navbar()
 
-# ----------------------------------
-# Hero Section
-# ----------------------------------
+
 
 st.markdown(
     """
-# 🍿 Discover Your Next Favorite Movie
+#  Discover Your Next Favorite Movie
 
 Get instant movie recommendations using an AI-powered
 content-based recommendation engine.
@@ -51,9 +41,7 @@ content-based recommendation engine.
 
 st.divider()
 
-# ----------------------------------
-# Load Movies
-# ----------------------------------
+
 
 with st.spinner("Loading movies..."):
     movies = get_movies()
@@ -62,9 +50,7 @@ if not movies:
     st.error("❌ Unable to connect to Backend API.")
     st.stop()
 
-# ----------------------------------
-# Movie Selection
-# ----------------------------------
+
 
 col1, col2 = st.columns([4, 1])
 
@@ -87,9 +73,7 @@ with col2:
         use_container_width=True
     )
 
-# ----------------------------------
-# Recommendation
-# ----------------------------------
+
 
 if recommend:
 
@@ -108,19 +92,17 @@ if recommend:
 
             tab1, tab2 = st.tabs(
                 [
-                    "🎬 Recommendations",
-                    "🤖 AI Explanation"
+                    "Recommendations",
+                    " AI Explanation"
                 ]
             )
 
-            # ----------------------------------
-            # Recommendation Tab
-            # ----------------------------------
+            
 
             with tab1:
 
                 st.subheader(
-                    f"🎯 Because you liked **{selected_movie}**"
+                    f" Because you liked **{selected_movie}**"
                 )
 
                 st.write(
@@ -135,14 +117,12 @@ if recommend:
 
                         movie_card(movie)
 
-            # ----------------------------------
-            # AI Explanation Tab
-            # ----------------------------------
+            
 
             with tab2:
 
                 st.subheader(
-                    "🤖 Why were these movies recommended?"
+                    " Why were these movies recommended?"
                 )
 
                 explanations = result.get(
@@ -155,7 +135,7 @@ if recommend:
                     for item in explanations:
 
                         st.markdown(
-                            f"### 🎬 {item['title']}"
+                            f"###  {item['title']}"
                         )
 
                         st.success(item["reason"])
@@ -184,5 +164,5 @@ if recommend:
 st.divider()
 
 st.caption(
-    "Built with ❤️ using Streamlit, FastAPI, Scikit-Learn, Pandas & MiniMax-M3"
+    "Built with using Streamlit, FastAPI, Scikit-Learn, Pandas & MiniMax-M3"
 )

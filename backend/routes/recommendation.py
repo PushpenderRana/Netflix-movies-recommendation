@@ -33,9 +33,7 @@ def recommend_with_llm(movie):
 
 
 
-# ---------------------------------------
-# Get Recommendation
-# ---------------------------------------
+
 
 @recommendation_bp.route("/recommend", methods=["POST"])
 def recommend():
@@ -88,9 +86,7 @@ def recommend():
         return jsonify({
             "error": str(e)
         }), 500
-# ---------------------------------------
 # Get All Movies
-# ---------------------------------------
 
 @recommendation_bp.route("/movies", methods=["GET"])
 def movies():
@@ -108,9 +104,7 @@ def movies():
         }), 500
 
 
-# ---------------------------------------
 # Search Movies
-# ---------------------------------------
 
 @recommendation_bp.route("/search", methods=["GET"])
 def search():

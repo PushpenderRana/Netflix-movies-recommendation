@@ -10,8 +10,7 @@ movies = pd.read_csv("backend/data/processed/final_movies.csv")
 
 print("Dataset Shape:", movies.shape)
 
-# Convert Tags into Vectors
-# ==========================================
+
 
 cv = CountVectorizer(
     max_features=5000,
@@ -22,17 +21,13 @@ vectors = cv.fit_transform(movies["tags"]).toarray()
 
 print("Vector Shape:", vectors.shape)
 
-# ==========================================
-# Calculate Cosine Similarity
-# ==========================================
+
 
 similarity = cosine_similarity(vectors)
 
 print("Similarity Shape:", similarity.shape)
 
-# ==========================================
-# Recommendation Function
-# ==========================================
+
 
 def recommend(movie):
 
@@ -61,15 +56,11 @@ def recommend(movie):
     for i in movie_list:
         print(movies.iloc[i[0]].title)
 
-# ==========================================
-# Test
-# ==========================================
+
 
 recommend("Avatar")
 
-# ==========================================
-# Save Models
-# ==========================================
+
 
 pickle.dump(
     movies,

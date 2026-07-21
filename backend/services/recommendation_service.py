@@ -9,9 +9,7 @@ similarity = pickle.load(
 )
 
 
-# ---------------------------------------
-# Recommendation
-# ---------------------------------------
+
 
 def recommend_movies(movie):
 
@@ -78,18 +76,14 @@ def recommend_movies(movie):
     }
 
 
-# ---------------------------------------
-# Get All Movies
-# ---------------------------------------
+
 
 def get_all_movies():
 
     return movies["title"].tolist()
 
 
-# ---------------------------------------
-# Search Movie
-# ---------------------------------------
+
 
 def search_movies(name):
 
